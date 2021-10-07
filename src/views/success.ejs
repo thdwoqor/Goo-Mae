@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('./partial/head') %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">-->
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="/public/css/login.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+        window.onload = async function(){
+            const response = await fetch('/public/subinfo.json');
+            const res = await response.json();
+            // const data = await JSON.stringify(res.data);
+            const data = await res;
+
+            document.getElementById('sub_img').src=data['<%- company %>'].icon;
+
+            // if('<%- company %>'=="넷플릭스"){
+            //     document.getElementById('sub_img').src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg";
+            // }else if ('<%- company %>'=="구글드라이브"){
+            //     document.getElementById('sub_img').src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Drive_logo_%282014-2020%29.svg";
+            // }else if ('<%- company %>'=="왓챠"){
+            //     document.getElementById('sub_img').src="https://www.dlive.kr/upload/med/news/1624863551128.png";
+            // }
+            
+            document.getElementById('company').innerText=data['<%- company %>'].displayname;
+
+            let today = new Date();   
+            let month = parseInt(today.getMonth()) + parseInt('<%- cycle %>'); 
+            if(month>12)
+                month-=12;
+            document.getElementById('month').innerText=month;
+        }
+    </script>
+
+</head>
+
+<body class="text-center">
+    <main class="form-signin">
+        <form>
+            <img id='sub_img' style="width:100px; height:100px; border-radius: 12px; border: 1px solid #CED4DA;"><br>
+            <div style="margin-top: 10px;">
+                <h3 id='company' style="font-weight: bold;" class="info_text"></h3>
+                <h3 style="font-weight: bold;" class="info_text">등록을 완료 했어요 &#128504;</h3><br>
+            </div>
+            <div>
+                <h3 style="font-weight: bold; color: #6C757D; margin-top: 10px; display:inline" class="info_text">
+                    다음 구독일 : 
+                </h3>
+                <h3 id='month' style="font-weight: bold; color: #6C757D; margin-top: 10px; display:inline" class="info_text"></h3>
+                <h3 style="font-weight: bold; color: #6C757D; margin-top: 10px; display:inline" class="info_text">
+                   월 <%- next %>일<br>요금 : <%- fee %>
+                </h3>
+                <br>
+            </div>
+
+            <a href="/" onclick="javascript:document.login.submit();" class="btn btn-lg btn-primary font-weight-bold"
+                style="margin-top: 10px; width: 90%">완료</a>
+        </form>
+    </main>
+</body>
+
+</html>

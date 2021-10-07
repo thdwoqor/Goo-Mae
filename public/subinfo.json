@@ -1,0 +1,72 @@
+{
+    "netflix" : {
+        "displayname": "넷플릭스",
+        "icon":"https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg",
+        "implemented": true
+    },
+    "watcha" : {
+        "displayname":"왓챠",
+        "icon":"https://www.dlive.kr/upload/med/news/1624863551128.png",
+        "implemented": true
+    },
+    "melon" : {
+        "displayname":"멜론",
+        "icon":"https://apksshare.com/wp-content/uploads/2021/06/APK-MOD-Download-034514.png",
+        "implemented": true
+    },
+    "adobe" : {
+        "displayname":"어도비 크리에이티브 클라우드",
+        "icon":"https://static-01.daraz.lk/p/9e3fdb2b917543803ce2ae6552c2c94f.png",
+        "implemented": false
+    },
+    "bugs" : {
+        "displayname":"벅스",
+        "icon":"https://play-lh.googleusercontent.com/1EYBuARUQsNbhEQ1Ax4q9G-E_KuMuzxklmBdMXlIksKtYlebieUxvVLrrtQv6oBWR4k",
+        "implemented": false
+    },
+    "youyube" : {
+        "displayname":"유튜브 프리미엄",
+        "icon":"https://littledeep.com/wp-content/uploads/2020/09/youtube-icon-style.png",
+        "implemented": false
+    },
+    "google" : {
+        "displayname":"구글 드라이브",
+        "icon":"https://t1.daumcdn.net/cfile/tistory/99D5843F5ACB1B611C",
+        "implemented": false
+    },
+    "genie" : {
+        "displayname":"지니 뮤직",
+        "icon":"https://apksshare.com/wp-content/uploads/2021/06/genie-APK-MOD-Download-05.02.00.png",
+        "implemented": false
+    },
+    "vibe" : {
+        "displayname":"바이브",
+        "icon":"https://obj-sg.thewiki.kr/data/766962655f736e735f3132303058313230302e706e67.png",
+        "implemented": false
+    },
+    "millie" : {
+        "displayname":"밀리의 서재",
+        "icon":"https://t1.daumcdn.net/cfile/tistory/99B6873E5F31E54D17",
+        "implemented": false
+    },
+    "closetshare" : {
+        "displayname":"클로젯셰어",
+        "icon":"https://s3.ap-northeast-2.amazonaws.com/theclozet-front-static/StaticContentFront/images/logo/closetshare_new_logo2.jpg",
+        "implemented": false
+    },
+    "ridibooks" : {
+        "displayname":"리디북스",
+        "icon":"https://lh3.googleusercontent.com/_5aKkX39oSsIi5z_9pst5cBnFceNgjh5UJASGJwPaDODlOVRN60UPdpQTkINzlJUjw",
+        "implemented": false
+    },
+    "mybox" : {
+        "displayname":"네이버 마이박스",
+        "icon":"https://play-lh.googleusercontent.com/p0ulJGD5X1diMXgTG9oauWbriH0nnM5-Rs215MtfwXbbQO8xvkKedZ1ToUx6yvDXGzLj",
+        "implemented": false
+    },
+    "gong" : {
+        "displayname":"커넥츠 공단기",
+        "icon":"https://s3.ap-northeast-2.amazonaws.com/st.dangidata/gong_dangicokr/img/common/og_gong.png?1630619019",
+        "implemented": false
+    }
+}

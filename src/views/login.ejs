@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('./partial/head') %>
+    <!-- Custom styles for this template -->
+    <link href="/public/css/login.css" rel="stylesheet">
+    <script src="/public/js/login.js" defer></script>
+</head>
+
+<!-- bootstrap Center aligned text on all viewport sizes. -->
+<body class="text-center">
+    <main class="form-signin">
+        <!-- <form method="POST" action="/login/user"> -->
+            <img class="mini-logo" src="https://whatssub.co/images/brand/img_symbol_default_filled.png" alt=""draggable="false" style="width:100px; height:100px; margin-bottom: 10px;">
+            <h3 style="font-weight: lighter; margin-bottom: 20px;">Sign in to Whats sub</h3>
+
+            <div id="error" class="alert alert-danger" role="alert" style="display: none;">
+                사용자 이름 또는 비밀번호가 잘못되었습니다.
+            </div>
+
+            <div style="background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 20px;">
+
+                <div class="form-floating">
+                    <label for="floatingInput" style="display: block; text-align: left; margin-left:30px; margin-top: 20px;" id="id_text">아이디</label>
+                    <input type="id" class="form-control" id="floatingInput">
+                </div>
+
+                <div class="form-floating">
+                    <label for="floatingPassword" style="display: block; text-align: left; margin-left:30px; margin-top: 10px;"id="password_text">비밀번호</label>
+                    <input type="password" class="form-control" id="floatingPassword">
+                </div>
+
+                <button class="btn btn-lg btn-primary" style="margin-bottom: 20px; width: 80%;">로그인</button>
+
+            </div>
+            <div style="background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 20px;">
+                <div style="margin-top: 10px; margin-bottom: 10px;">
+                    <h6 style="display:inline; font-weight: lighter; ">왓섭이 처음이신가요?</h6>
+                    <a href="/register">회원가입</a>
+                </div>
+            </div>
+        <!-- </form> -->
+    </main>
+</body>
+
+</html>
