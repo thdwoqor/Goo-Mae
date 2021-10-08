@@ -19,7 +19,7 @@ const process_main =async function (req, res) {
             for(let i in rows) {
                 rows[i].title=rows[i].sub_company;
                 delete rows[i].sub_company;
-
+                
                 const dt = new Date();
                 let start;
                 if(rows[i].sub_next<10)
@@ -27,6 +27,8 @@ const process_main =async function (req, res) {
                 else
                     start = `${dt.getFullYear()}-${dt.getMonth()+1}-${rows[i].sub_next}`;
                 // rows[i].display='list-item';
+                rows[i].icon=dataJSON[rows[i].title].icon;
+                rows[i].name=dataJSON[rows[i].title].displayname;
                 rows[i].fee=rows[i].sub_fee;
                 rows[i].start=start;
                 // rows[i].end=start;

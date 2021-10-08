@@ -6,6 +6,7 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.js'></script>
     <link href="/public/css/main_cdd.css" rel="stylesheet">
+
     <style>
         .fc-past {
             background-color: #000000;
@@ -23,10 +24,29 @@
         .fc-event-title-container{
             text-align:center;
         }
-
     </style>
     <script>
         'use strict'
+        let beforePosition = document.documentElement.scrollTop
+
+        document.addEventListener('scroll', function() {
+            const navbarY = document.getElementById('navbar').getBoundingClientRect().bottom;
+            const welcomeY = document.getElementById('welcome').getBoundingClientRect().bottom;
+            const navbar = document.getElementById('navbar');
+
+            if (navbarY >= welcomeY) {
+                // navbar.classList.add('detail');
+                document.getElementById('home').style.display="initial";
+            }
+            else {
+                // navbar.classList.remove('detail');
+                document.getElementById('home').style.display="none";
+            }
+        });
+
+
+        let sublist = document.createElement('div');
+
         let total_expenditure = 0;
         let Payment_completed = 0;
         let dt = new Date();
@@ -52,6 +72,18 @@
                     total_expenditure+=info.event.extendedProps.fee;
                     if(new Date(today)>new Date(info.event.start))
                         Payment_completed+=info.event.extendedProps.fee;
+
+                    // const container = document.getElementById('service-container');
+                    let date = new Date(info.event.start);
+                    sublist.innerHTML += `
+                        <div style="padding: 10px 30px; display: flex; align-items: center; background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; height: 60px; margin-top: 20px;">
+                            <img src="${info.event.extendedProps.icon}" style="  width:50px; height:50px; border-radius: 50px;">
+                            <span style="margin-left: 20px; font-weight:bold;">${info.event.extendedProps.name}<br>${info.event.extendedProps.fee}</span>
+                            <div style="background-color:#FFFFFF; align-items: center; display: flex; justify-content: center; margin-left: auto;  border-radius: 20px; border: 1px solid #CED4DA; height: 30px; width : 100px;">
+                                <span>${date.getMonth()+1}월 ${date.getDate()}일</span>
+                            </div>
+                        </div>
+                    `;
                 }
  
             });
@@ -63,25 +95,79 @@
             total.innerText=total_expenditure;
             const complete = document.getElementById('complete');
             complete.innerText=Payment_completed;
+            console.log(sublist);
+            let container = document.getElementById('sub_list');
+            container.appendChild(sublist);
         }
     </script>
 </head>
+<!-- var rect = $0.getBoundingClientRect(); console.log(rect.bottom) -->
+<body style="
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+">
+    <div style="width: 500px">
+        <div id="navbar" style="display: flex; align-items: center; background-color: #FFFFFF; position: sticky; top: 0px; z-index: 100; padding: 10px 0;">
+            <img onclick="window.scrollTo(0,0);" src="/public/images/user.png" style="width:70px; height:70px; border-radius: 50px; border: 2px solid #CED4DA; ">
 
-<body style="position: absolute; left: 50%; top: 150px; transform: translate(-50%);">
-    <img src="/public/images/user.png" style="width:50px; height:50px; border-radius: 50px; border: 1px solid #CED4DA;">
-    <h1>안녕하세요,<br><span><%- name %></span>님 👋</h1>
+            <div id="home"; style="display: none; margin-left: 20px; font-weight:bold; font-size:xx-large;">홈</div>
+        </div>
+        
+        <h1 id="welcome" style="margin-bottom: 30px;">안녕하세요,<br><span><%- name %></span>님 👋</h1>
 
-    <div id='calendar' style="width: 500px;height: 500;  border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 10px;"></div>
+        <div id='calendar' style="height: 500px; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 10px;"></div>
 
-    <div style="background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 20px; height: 80px; margin-bottom: 150px; margin-top: 30px;">
-        <div style="transform: translateY(50%); text-align:center; font-weight: lighter;">
-            <span style="display: inline-block; font-weight:normal; color: #3788D8; margin-right: 10px;">결제 완료<br><span id="complete"></span>원</span>
-            <span style="display: inline-block; font-weight:normal; color: #646464;">지출 총액<br><span id="total"></span>원</span>
-            
+        <div style="
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid #CED4DA;
+            margin-bottom: 20px;
+            height: 80px;
+            margin-top: 30px;
+            text-align:center;
+            font-weight: lighter;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <span style="font-weight:normal; color: #3788D8; margin-right: 10px;">결제 완료<br><span id="complete"></span>원</span>
+            <span style="font-weight:normal; color: #646464;">지출 총액<br><span id="total"></span>원</span>
             <!-- transform: translateY(50%); font-weight: lighter;  -->
         </div>
+        <h2 style="color: #646464;">구독 서비스</h2>
+
+        <div id="sub_list">
+            <!-- <div style="padding: 10px 30px; display: flex; align-items: center; background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; height: 60px; margin-top: 20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" style="  width:50px; height:50px; border-radius: 50px;">
+                <span style="margin-left: 10px; font-weight:bold;">넷플릭스<br>15000</span>
+                <div style="background-color:#FFFFFF; align-items: center; display: flex; justify-content: center; margin-left: auto;  border-radius: 20px; border: 1px solid #CED4DA; height: 30px; width : 100px;">
+                    <span>10월 19일</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; height: 80px; margin-top: 20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" style="margin-left: 20px;  width:50px; height:50px; border-radius: 50px;">
+                <span style="margin-left: 10px; font-weight:bold;">넷플릭스<br>15000</span>
+
+            </div> -->
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" onClick="location.href='/sub/list'" style="
+            background-color: #3788D8;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            position: sticky;
+            bottom: 20px;
+            z-index: 100;
+            box-shadow: 0 0 20px 20px #ffff;
+        ">
+        <span style="font-weight: bold; font-size:large;">+ </span> 등록하기
+        </button>
+
+        <div style="margin-bottom: 200px;"></div>
     </div>
-
 </body>
-
 </html>
