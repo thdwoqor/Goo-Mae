@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head> 
+    <meta charset='utf-8' />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.js'></script>
+    <link href="/public/css/main_cdd.css" rel="stylesheet">
+    <style>
+        .fc-past {
+            background-color: #000000;
+        }
+        .fc-daygrid-day-frame  { /* needs to be same precedence */
+            width: 70px;
+            height: 70px;
+        }
+        .fc-daygrid-day-number {
+            max-height: 20px;
+        }
+        .fc-toolbar-chunk{
+            display: none;
+        }
+        .fc-event-title-container{
+            text-align:center;
+        }
+
+    </style>
+    <script>
+        'use strict'
+        let total_expenditure = 0;
+        let Payment_completed = 0;
+        let dt = new Date();
+        let today;
+        if(dt.getDate()<10)
+            today=`${dt.getFullYear()}-${dt.getMonth()+1}-0${dt.getDate()}`;
+        else
+            today=`${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`;
+        console.log(today);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+
+                height: 500,
+                initialView: 'dayGridMonth',
+                locale: 'ko',
+                events : {
+                    url: '/',
+                    method: 'POST',
+                }, eventDidMount: function(info) {
+                    console.log(info.event.extendedProps.fee);
+                    total_expenditure+=info.event.extendedProps.fee;
+                    if(new Date(today)>new Date(info.event.start))
+                        Payment_completed+=info.event.extendedProps.fee;
+                }
+ 
+            });
+            calendar.render();
+        });
+        window.onload = function(){
+            console.log(total_expenditure);
+            const total = document.getElementById('total');
+            total.innerText=total_expenditure;
+            const complete = document.getElementById('complete');
+            complete.innerText=Payment_completed;
+        }
+    </script>
+</head>
+
+<body style="position: absolute; left: 50%; top: 150px; transform: translate(-50%);">
+    <img src="/public/images/user.png" style="width:50px; height:50px; border-radius: 50px; border: 1px solid #CED4DA;">
+    <h1>안녕하세요,<br><span><%- name %></span>님 👋</h1>
+
+    <div id='calendar' style="width: 500px;height: 500;  border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 10px;"></div>
+
+    <div style="background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 20px; height: 80px; margin-bottom: 150px; margin-top: 30px;">
+        <div style="transform: translateY(50%); text-align:center; font-weight: lighter;">
+            <span style="display: inline-block; font-weight:normal; color: #3788D8; margin-right: 10px;">결제 완료<br><span id="complete"></span>원</span>
+            <span style="display: inline-block; font-weight:normal; color: #646464;">지출 총액<br><span id="total"></span>원</span>
+            
+            <!-- transform: translateY(50%); font-weight: lighter;  -->
+        </div>
+    </div>
+
+</body>
+
+</html>

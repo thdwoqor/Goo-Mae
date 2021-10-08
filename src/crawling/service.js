@@ -23,7 +23,8 @@ module.exports = class Service {
             .setChromeOptions(
                 new chrome.Options()
                 // headless 모드 사용
-                //.headless()
+                .headless()
+                .addArguments("user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko")
             )
             .build();  
         console.dir("1번 크롬"+this.driver);

@@ -10,7 +10,7 @@ const dataJSON = JSON.parse(dataBuffer);
 
 const services = require('../crawling/services');
 
-//console.log(dataJSON['netflix'].displayname);
+// console.log(dataJSON['adobe'].displayname);
 
 const output = {
     prepared: (req, res) => {
@@ -29,6 +29,7 @@ const output = {
         if(dataJSON[name].implemented==false){
             res.render('prepared.ejs');
         }else{
+            console.log(dataJSON[name].displayname);
             res.render('sublogin.ejs',{
                 company:dataJSON[name].displayname
             });
@@ -38,7 +39,7 @@ const output = {
         const id = req.body.id;
         const password = req.body.password;
         const company = req.body.company;
-
+        console.log(req.body);
         res.render('loading.ejs', {
             id: id,
             password: password,
@@ -79,14 +80,14 @@ const parsing = async function (req, res) {
         await service.launch();
     }catch(err){
         console.log(err);
-        service.quit();
+        //service.quit();
     }
 
     try{
         await service.login(id, password);
     }catch(err){
         console.log(err);
-        service.quit();
+        //service.quit();
     }
 
     let subscription;
@@ -94,7 +95,7 @@ const parsing = async function (req, res) {
         subscription = await service.get_subscription_info();
     }catch(err){
         console.log(err);
-        service.quit();
+        //service.quit();
     }
 
     return res.json({

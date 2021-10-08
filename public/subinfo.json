@@ -9,14 +9,14 @@
         "icon":"https://www.dlive.kr/upload/med/news/1624863551128.png",
         "implemented": true
     },
-    "melon" : {
-        "displayname":"멜론",
-        "icon":"https://apksshare.com/wp-content/uploads/2021/06/APK-MOD-Download-034514.png",
-        "implemented": true
-    },
     "adobe" : {
         "displayname":"어도비 크리에이티브 클라우드",
         "icon":"https://static-01.daraz.lk/p/9e3fdb2b917543803ce2ae6552c2c94f.png",
+        "implemented": true
+    },
+    "melon" : {
+        "displayname":"멜론",
+        "icon":"https://apksshare.com/wp-content/uploads/2021/06/APK-MOD-Download-034514.png",
         "implemented": false
     },
     "bugs" : {

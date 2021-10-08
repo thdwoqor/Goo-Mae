@@ -2,7 +2,8 @@
 
 const routes = [
     //===== User =====//
-    { module: require('./main'), path: '/', method: 'main', type: 'get' },
+    { module: require('./main'), path: '/', method: 'output_main', type: 'get' },
+    { module: require('./main'), path: '/', method: 'process_main', type: 'post' },
     { module: require('./login'), path: '/login', method: 'output_login', type: 'get' },
     { module: require('./login'), path: '/login', method: 'process_login', type: 'post' },
     { module: require('./login'), path: '/register', method: 'output_register', type: 'get' },

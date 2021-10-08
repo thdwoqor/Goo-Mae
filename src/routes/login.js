@@ -34,6 +34,7 @@ const process = {
 
             req.session.user = {
                 id: id,
+                name: rows[0].member_name,
                 authorized: true
             };
             return res.json({ success: true });
@@ -41,10 +42,10 @@ const process = {
     },
     register : async (req, res) =>{
         console.log(req.body);
-        const { id, pw } = req.body;
+        const { id, pw , name } = req.body;
 
-        var sql = 'INSERT INTO member ( member_id, member_pw ) VALUES ( ?, ? )'; 
-        var params = [id,pw];
+        var sql = 'INSERT INTO member ( member_id, member_pw, member_name ) VALUES ( ?, ?, ? )'; 
+        var params = [id,pw,name];
 
         try{
             const insert = await db.query(sql,params);

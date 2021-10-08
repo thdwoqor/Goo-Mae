@@ -10,7 +10,7 @@
             var timer = setInterval(async function(){
                     document.getElementById('time').innerText=String(Number(document.getElementById('time').innerText)+1);
 
-                    if(document.getElementById('time').innerText>15)
+                    if(document.getElementById('time').innerText>30)
                         history.back();
             }, 1000)
             window.onload =async function(){
@@ -48,7 +48,7 @@
                     <h3 style="text-align: left; font-weight: bold; color: #6C757D;" class="info_text"><%- id %> 계정으로<br><%- company %>를 등록하고 있어요</h3><br>
                 </div>
                 <div style="background-color: #FFFFFF; border-radius: 12px; border: 1px solid #CED4DA; margin-bottom: 10px;">
-                    <h6 style="color: #6C757D; margin-top: 10px; display: inline;">10초 예상,</h6> 
+                    <h6 style="color: #6C757D; margin-top: 10px; display: inline;">20초 예상,</h6> 
                     <h6 id="time" style="color: #6C757D; display: inline;">0</h6>
                     <h6 style="color: #6C757D; margin-bottom: 10px; display: inline;">초 소요</h6>
                     

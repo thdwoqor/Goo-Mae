@@ -13,7 +13,7 @@
 
       function id_message() {
         let x = document.getElementsByClassName("info_text")[0];
-        x.innerText = "넷플릭스 이메일 혹은 전화번호를 입력해주세요";
+        x.innerText = "<%- company %> 이메일 혹은 전화번호를 입력해주세요";
         document.getElementById('password_text').style.color = "black"
         document.getElementById('id_text').style.color = "#007BFF"
       }
@@ -80,10 +80,11 @@
             <h6 style="text-align: left; margin-left: 16px; color: #6C757D;">잊거나 나중에 다시 구독할 때 <br>사용해요!</h6>
 
           </div>
-          <input name="company" style="display: none;" value=<%- company %>>
+          <input name="company" style="display: none;" value="<%- company %>">
+          <input name="key" style="display: none;" value="<%- company %>">
           <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="SomeAlternateText"> -->
           <button id="btn" class="w-100 btn btn-lg btn-primary" type="submit">등록하기</button>
-
+          
     </form>
   </main>
 </body>

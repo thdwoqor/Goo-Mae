@@ -1,0 +1,73 @@
+@font-face {
+    font-family: "cdd";
+    src: url('/public/font/ProductSansBold.ttf') format('truetype');
+  }
+
+body {
+	font-family: "cdd";
+}
+
+.fc-daygrid-day-frame {
+    background-color: none;
+}
+/* background color change */
+
+.fc-theme-standard .fc-scrollgrid {
+    border: none;
+}
+
+.fc-theme-standard td,
+  .fc-theme-standard th {
+      border: none;
+  }
+  /* Table Border Delete */
+
+.fc table {
+    border: none;
+}
+
+.fc .fc-scrollgrid {
+    border: none;
+}
+
+.fc-col-header-cell{
+    border-bottom: solid 1px gray !important;
+}
+
+.fc-col-header-cell-cushion {
+    margin-bottom: 10px;
+}
+
+.fc-day-sun {
+    color: #f2685e;
+}
+.fc-day-sat {
+    color: #424cff;
+}
+
+.fc .fc-daygrid-day-top {
+    justify-content: center;
+}
+/*
+.fc-col-header-cell.fc-day.fc-day-sun {
+    background-color: #f2685e;
+}
+.fc-col-header-cell.fc-day.fc-day-mon {
+    background-color: #f2a15e;
+}
+.fc-col-header-cell.fc-day.fc-day-tue {
+    background-color: #f7ea57;
+}
+.fc-col-header-cell.fc-day.fc-day-wed {
+    background-color: #45f75a;
+}
+.fc-col-header-cell.fc-day.fc-day-thu {
+    background-color: #3385ff;
+}
+.fc-col-header-cell.fc-day.fc-day-fri {
+    background-color: #5934c7;
+}
+.fc-col-header-cell.fc-day.fc-day-sat {
+    background-color: #e55bf5;
+}
+*/
