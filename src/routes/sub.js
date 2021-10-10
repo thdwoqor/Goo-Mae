@@ -60,7 +60,7 @@ const output = {
 
         try {
             const insert = await db.query(sql, params);
-            console.log(insert);
+            // console.log(insert);
         } catch (err) {
             console.log(err);
         }

@@ -8,17 +8,24 @@ const routes = [
     { module: require('./login'), path: '/login', method: 'process_login', type: 'post' },
     { module: require('./login'), path: '/register', method: 'output_register', type: 'get' },
     { module: require('./login'), path: '/register', method: 'process_register', type: 'post' },
-    { module: require('./sub'), path: '/sub', method: 'output_redirect_list', type: 'get' },
-    { module: require('./sub'), path: '/sub/prepared', method: 'output_prepared', type: 'get' },
-    { module: require('./sub'), path: '/sub/list', method: 'output_list', type: 'get' },
-    { module: require('./sub'), path: '/sub/list/:name', method: 'output_login', type: 'get' },
-    { module: require('./sub'), path: '/sub/loading', method: 'output_loading', type: 'post' },
-    { module: require('./sub'), path: '/sub/parsing', method: 'parsing', type: 'post' },
-    { module: require('./sub'), path: '/sub/success', method: 'output_success', type: 'get' },
+    { module: require('./sub'), authorized:true ,path: '/sub', method: 'output_redirect_list', type: 'get' },
+    { module: require('./sub'), authorized:true ,path: '/sub/prepared', method: 'output_prepared', type: 'get' },
+    { module: require('./sub'), authorized:true ,path: '/sub/list', method: 'output_list', type: 'get' },
+    { module: require('./sub'), authorized:true ,path: '/sub/list/:name', method: 'output_login', type: 'get' },
+    { module: require('./sub'), authorized:true ,path: '/sub/loading', method: 'output_loading', type: 'post' },
+    { module: require('./sub'), authorized:true ,path: '/sub/parsing', method: 'parsing', type: 'post' },
+    { module: require('./sub'), authorized:true ,path: '/sub/success', method: 'output_success', type: 'get' },
 ];
 
 
 var route_loader = {};
+
+function isAuthenticated(req, res, next) {
+    if (req.session.user===undefined)
+        res.redirect('/');
+    else
+        next();
+}
 
 route_loader.init = function (app, router) {
     console.log('route_loader.init 호출됨.');
@@ -30,9 +37,15 @@ function initRoutes(app, router) {
     for (var route of routes) {
         //  라우팅 처리
         if (route.type == 'get') {
-            router.route(route.path).get(route.module[route.method]);
+            if(route.authorized)
+                router.route(route.path).get(isAuthenticated, route.module[route.method]);
+            else
+                router.route(route.path).get(route.module[route.method]);
         } else if (route.type == 'post') {
-            router.route(route.path).post(route.module[route.method]);
+            if(route.authorized)
+                router.route(route.path).post(isAuthenticated, route.module[route.method]);
+            else
+                router.route(route.path).post(route.module[route.method]);
         } else {
             router.route(route.path).post(route.module[route.method]);
         }

@@ -37,7 +37,7 @@ const process_main =async function (req, res) {
                 delete rows[i].sub_fee;
                 delete rows[i].member_id;
             }
-            console.log(rows);
+            // console.log(rows);
             // const events = [
             //     {
             //         title: "Event 1",
