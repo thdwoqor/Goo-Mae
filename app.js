@@ -1,11 +1,10 @@
-const app = require('./index.js');
-const db = require('./db/mariadb.js');
-
+const app = require('./src/index.js');
+const db = require('./src/db/mariadb.js');
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 const { prototype } = require('events');
 const mysql = require('mysql2/promise'); // mysql 변수에 mysql 모듈을 할당
-require('dotenv').config();
 
 (async () => {
     // const connection = await mysql.createConnection({

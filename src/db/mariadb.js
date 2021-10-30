@@ -2,7 +2,7 @@
 
 const { prototype } = require('events');
 const mysql = require('mysql2/promise'); // mysql 변수에 mysql 모듈을 할당
-require('dotenv').config();
+//require('dotenv').config();
 
 // const db = mysql. createConnection({  //커넥션변수에 mysql변수에 있는 크리에이드커넥션 메소드를 호출(객체를 받음) 할당
 //     //host    : 'localhost',   //host객체 - 마리아DB가 존재하는 서버의 주소
