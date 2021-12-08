@@ -38,41 +38,22 @@
             }
 
             window.onload =async function(){
-            
+                
                 const response = await fetch('/public/subinfo.json');
                 const res = await response.json();
                 // const data = await JSON.stringify(res.data);
                 const data = await res;
                 console.log(data);
                 
-                Object.keys(data).forEach(function(k){
+                Object.keys(data).forEach(function(element){
                     const container = document.getElementById('service-container');
 
                     container.innerHTML += `
-                        <a href="list/${k}" class="list-group-item list-group-item-action">
-                            <img src="${data[k].icon}" style="width:50px; height:50px; border-radius: 50px;">
-                            <b style="margin-left: 15px;">${data[k].displayname}</b>
+                        <a href="list/${element}" class="list-group-item list-group-item-action">
+                            <img src="${data[element].icon}" style="width:50px; height:50px; border-radius: 50px;">
+                            <b style="margin-left: 15px;">${data[element].displayname}</b>
                         </a>
                     `;
-                    // let list = document.getElementsByClassName('list-group')[0];
-                
-                    // let sub_doc = document.createElement( 'a' );
-                    // //sub_doc.setAttribute("href","#");
-                    // sub_doc.setAttribute("href","sub/"+data[k].sub_index);
-                    // sub_doc.setAttribute("class","list-group-item list-group-item-action");
-                    
-                    // let sub_img = document.createElement( 'img' );
-                    // sub_img.setAttribute("src",data[k].sub_icon);
-                    // sub_img.setAttribute("style","width:50px; height:50px; border-radius: 50px; border: 1px solid #CED4DA;");
-                    
-                    // let sub_b = document.createElement( 'b' );
-                    // sub_b.setAttribute("style","margin-left: 15px;");
-                    // sub_b.innerText=data[k].sub_company;
-
-                    // sub_doc.appendChild(sub_img);
-                    // sub_doc.appendChild(sub_b);
-
-                    // list.appendChild(sub_doc);
                 });
             }
         </script>

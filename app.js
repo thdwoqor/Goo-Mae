@@ -1,3 +1,4 @@
+// wavi C:\Users\celeb\goo-mae C:\Users\celeb\OneDrive\사진/example.svg
 const app = require('./src/index.js');
 const db = require('./src/db/mariadb.js');
 require('dotenv').config();

@@ -37,18 +37,3 @@ const db = {
 
 module.exports=db;
 
-
-
-// db.init = function(app) {
-// 	console.log('init() 호출됨.');
-// 	//app.set('connection', connection);
-// 	connect(app);
-// }
-
-// function connect(app) {
-	
-//     // db.connect();
-
-//     console.log('db 객체가 app 객체의 속성으로 추가됨.');
-// }
-

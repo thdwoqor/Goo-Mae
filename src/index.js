@@ -57,7 +57,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/public', express.static(path.join(__dirname, '/../public')));
 
 // 라우팅 정보를 읽어들여 라우팅 설정
-route_loader.init(app, express.Router());
+// route_loader.init(app, express.Router());
+const routes=new route_loader();
+routes.initRoutes(app, express.Router());
 
 // 등록되지 않은 패스에 대해 페이지 오류 응답
 app.all('*', function (req, res) {

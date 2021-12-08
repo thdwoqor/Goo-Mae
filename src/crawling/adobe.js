@@ -54,7 +54,6 @@ module.exports = class AdobeService extends Service {
             next_membership = this.moment(next_membership, '다음 결제일: YYYY년 MM월 DD일');
             Information['next_membership'] = next_membership.format('DD');
 
-
             let subscription_fee_Element = this.driver.findElement(this.By.xpath('//*[@id="app"]/div/div/div[2]/main/div/section[1]/div/div/div/div/div/div[1]/div/div[2]/h5'));
             let subscription_fee = await subscription_fee_Element.getText();
             Information['subscription_fee'] = this.get_subscription_fee(subscription_fee); 
