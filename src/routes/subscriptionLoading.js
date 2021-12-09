@@ -5,7 +5,7 @@
 // const whatcha = require('../crawling/whatcha');
 // const db = require('../db/mariadb');
 
-const services = require('../crawling/services');
+const Service = require('../crawling/services');
 
 const controller = require('./controller');
 
@@ -28,7 +28,7 @@ class subscriptionLoading extends controller{
         const company = req.body.company;
 
         // TODO: Fix korean company name
-        const service = services.get_service(company);
+        const service = Service.get_service(company);
 
         try{
             await service.launch();

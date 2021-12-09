@@ -2,6 +2,7 @@
 const login=require('./login')
 const register=require('./register')
 const main=require('./main')
+const subscriptionLoading = require('./subscriptionLoading')
 const subscriptionList=require('./subscriptionList')
 const subscriptionLogin = require('./subscriptionLogin')
 const subscriptionPrepared = require('./subscriptionPrepared')
