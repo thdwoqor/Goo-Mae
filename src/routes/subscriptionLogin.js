@@ -10,7 +10,7 @@ class subscriptionLogin extends controller{
     async Display(req,res){
         const name = req.params.name;
         if(dataJSON[name].implemented==false){
-            res.render('prepared.ejs');
+            res.redirect('/sub/prepared');
         }else{
             console.log(dataJSON[name].displayname);
             res.render('sublogin.ejs',{

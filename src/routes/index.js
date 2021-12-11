@@ -7,7 +7,6 @@ const subscriptionList=require('./subscriptionList')
 const subscriptionLogin = require('./subscriptionLogin')
 const subscriptionPrepared = require('./subscriptionPrepared')
 const subscriptionSuccess = require('./subscriptionSuccess')
-const subscriptionLoading = require('./subscriptionLoading')
 
 class Routes {
     

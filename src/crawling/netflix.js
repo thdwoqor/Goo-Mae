@@ -1,8 +1,3 @@
-// require('chromedriver');
-// const {Builder, By, Key, until} = require('selenium-webdriver');
-// const chrome = require('selenium-webdriver/chrome');
-
-// const moment = require('moment');
 
 const Service = require('./service');
 
@@ -68,38 +63,3 @@ module.exports = class NetflixService extends Service {
             return Information;
       }
 }
-
-/*
-(async function myFunction() {
-	let driver = await new Builder()
-      .forBrowser('chrome')
-      .setChromeOptions(
-            new chrome.Options()
-            // headless 모드 사용
-            .headless()
-        )
-      .build();  
-
-      await login(driver);
-      await Search(driver);
-      console.dir(Information);
-})();
-*/
-
-// exports.netflix_crawling = async function(id,pw){
-//       let driver = await new Builder()
-//       .forBrowser('chrome')
-//       .setChromeOptions(
-//             new chrome.Options()
-//             // headless 모드 사용
-//             .headless()
-//       )
-//       .build();  
-      
-//       await login(driver,id,pw);
-//       await Search(driver);
-//       await driver.quit();
-//       return Information;
-// }
-
-
